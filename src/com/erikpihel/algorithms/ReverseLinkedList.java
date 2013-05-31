@@ -45,30 +45,30 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 
 		// iterate through each item and reverse the direction of the pointer;
 		// when next is null, we're on the last item in the list => exit the loop
-        while (next != null) {
-        	// store new target of the current item's pointer
-        	// (null the first time because current first element
-        	// will be the new last element, which has no pointer to next element)
-        	newPointerTarget = current;
-        	
-        	// move to next item in the list
-        	current = next;
-        	
-        	// define item for next iteration
-        	next = current.next;
-        	
-        	//System.out.println("newPointerTarget [" + newPointerTarget + "], current [" + current + "], next [" + next + "]");
-        	
-        	// repoint the current item's pointer in the opposite direction
-        	// (from next to previous)
-            current.next = newPointerTarget;
-        }
- 
-        // now that all the pointers have been reversed,
-        // set head to the previously last item in the list
-        // to align with the new direction
-        head = current;
-    }
+		while (next != null) {
+			// store new target of the current item's pointer
+			// (null the first time because current first element
+			// will be the new last element, which has no pointer to next element)
+			newPointerTarget = current;
+			
+			// move to next item in the list
+			current = next;
+			
+			// define item for next iteration
+			next = current.next;
+			
+			//System.out.println("newPointerTarget [" + newPointerTarget + "], current [" + current + "], next [" + next + "]");
+			
+			// repoint the current item's pointer in the opposite direction
+			// (from next to previous)
+			current.next = newPointerTarget;
+		}
+		
+		// now that all the pointers have been reversed,
+		// set head to the previously last item in the list
+		// to align with the new direction
+		head = current;
+	}
 	
 	@Override
 	public String toString() {
@@ -77,14 +77,14 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 	
 	private StringBuilder append(Pointer<T> pointer, StringBuilder sb) {
 		sb.append(pointer.value);
- 
-        if (pointer.next != null){
-            sb.append(" -> ");
-            return append(pointer.next, sb);
-        }
-        
-        else {
-        	return sb;
-        }
-    }
+		
+		if (pointer.next != null) {
+			sb.append(" -> ");
+			return append(pointer.next, sb);
+		}
+		
+		else {
+			return sb;
+		}
+	}
 }
