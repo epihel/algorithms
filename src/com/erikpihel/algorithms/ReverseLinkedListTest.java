@@ -20,12 +20,12 @@ public class ReverseLinkedListTest {
 		// start with last item, which should now be first item
 		int counter = list.size() - 1;
  
-        // reverse-iterate the original list,
+		// reverse-iterate the original list,
 		// while forward-iterating through the pointers
 		while (counter >= 0) {
-        	Assert.assertEquals(list.get(counter), current.value);
-        	current = current.next;
-            --counter;
-        }
+			Assert.assertEquals(list.get(counter), current.value);
+			current = current.next;
+			--counter;
+		}
 	}
 }
