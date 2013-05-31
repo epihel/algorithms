@@ -15,8 +15,8 @@ public class FindSumInArray {
 		// index of last element, the largest number in second half of list
 		int secondHalfIndex = arr.length - 1;
 	    
-	    // loop until the middle of the array
-	    // when we've tried all additions
+		// loop until the middle of the array
+		// when we've tried all additions
 		while (firstHalfIndex < secondHalfIndex) {
 			int sum = arr[firstHalfIndex] + arr[secondHalfIndex];
 			//System.out.println("[" + arr[firstHalfIndex] + "] + [" + arr[secondHalfIndex] + "] = [" + sum + "]");
