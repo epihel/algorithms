@@ -1,10 +1,9 @@
 package com.erikpihel.algorithms;
 
+import com.erikpihel.Pointer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import com.erikpihel.Pointer;
 
 /**
  * Given a linked list, reverse the list
