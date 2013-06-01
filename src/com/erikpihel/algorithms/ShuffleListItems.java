@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Given a list, shuffle the items.
  */
-public class Shuffler {
+public class ShuffleListItems {
 	public static List<String> shuffle(List<String> list) {
 		List<String> shuffledList = new ArrayList<String>();
 		List<String> unshuffledList = new ArrayList<String>(list);

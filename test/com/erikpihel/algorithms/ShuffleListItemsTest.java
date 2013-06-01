@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
-public class ShufflerTest {
+public class ShuffleListItemsTest {
 	/**
 	 * It's hard to unit-test randomness.
 	 * Instead, shuffle 5 times and visually verify
@@ -16,7 +16,7 @@ public class ShufflerTest {
 		int numSamples = 5;
 		
 		for (int i = 0; i < numSamples; ++i) {
-			List<String> shuffledList = Shuffler.shuffle(list);
+			List<String> shuffledList = ShuffleListItems.shuffle(list);
 			System.out.println("shuffled list: " + Arrays.toString(shuffledList.toArray()));
 		}
 	}
