@@ -1,13 +1,13 @@
-package com.erikpihel.algorithms;
+package com.erikpihel;
 
 /**
  * Simulates C++ pointers.
  */
 public class Pointer<T> {
-	T value;
-	Pointer<T> next;
+	public T value;
+	public Pointer<T> next;
 	
-	Pointer(T value) {
+	public Pointer(T value) {
 		this.value = value;
 	}
 	

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.erikpihel.Pointer;
+
 /**
  * Given a linked list, reverse the list
  * without using a second data structure.
