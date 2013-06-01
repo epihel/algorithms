@@ -14,8 +14,8 @@ public class ShuffleListItems {
 		Random rnd = new Random();
 		
 		for (int i = 0; i < list.size(); ++i) {
-			int index = rnd.nextInt(unshuffledList.size());
-			T randomlyPulledItem = unshuffledList.remove(index);
+			int randomIndex = rnd.nextInt(unshuffledList.size());
+			T randomlyPulledItem = unshuffledList.remove(randomIndex);
 			shuffledList.add(randomlyPulledItem);
 		}
 		
