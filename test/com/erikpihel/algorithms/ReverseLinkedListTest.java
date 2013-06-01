@@ -1,11 +1,10 @@
 package com.erikpihel.algorithms;
 
+import com.erikpihel.Pointer;
 import java.util.Arrays;
 import java.util.List;
 import junit.framework.Assert;
 import org.junit.Test;
-
-import com.erikpihel.Pointer;
 
 public class ReverseLinkedListTest {
 	@Test
