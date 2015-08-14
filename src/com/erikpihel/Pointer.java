@@ -5,7 +5,7 @@ package com.erikpihel;
  */
 public class Pointer<T> {
 	public T value;
-	public Pointer<T> next;
+	public Pointer<T> other;
 	
 	public Pointer(T value) {
 		this.value = value;

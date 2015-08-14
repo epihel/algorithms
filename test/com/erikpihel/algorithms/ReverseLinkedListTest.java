@@ -14,7 +14,6 @@ public class ReverseLinkedListTest {
 		);
 		ReverseLinkedList<Integer> rll = new ReverseLinkedList<Integer>(list);
 		rll.reverse();
-		//System.out.println(rll);
 		
 		// new head should be original last item
 		Pointer<Integer> current = rll.head;
@@ -25,7 +24,7 @@ public class ReverseLinkedListTest {
 		// while forward-iterating through the pointers
 		while (counter >= 0) {
 			Assert.assertEquals(list.get(counter), current.value);
-			current = current.next;
+			current = current.other;
 			--counter;
 		}
 	}

@@ -25,8 +25,10 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 			Pointer<T> p = new Pointer<T>(list.get(i));
 			pointerList.add(p);
 			
+			// Pointer#other in this case, is a reference
+			// to the next item in the list
 			if (i != 0) {
-				pointerList.get(i - 1).next = p;
+				pointerList.get(i - 1).other = p;
 			}
 		}
 		
@@ -56,13 +58,13 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 			current = next;
 			
 			// define item for next iteration
-			next = current.next;
+			next = current.other;
 			
 			//System.out.println("newPointerTarget [" + newPointerTarget + "], current [" + current + "], next [" + next + "]");
 			
 			// repoint the current item's pointer in the opposite direction
 			// (from next to previous)
-			current.next = newPointerTarget;
+			current.other = newPointerTarget;
 		}
 		
 		// now that all the pointers have been reversed,
@@ -79,9 +81,9 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 	private StringBuilder append(Pointer<T> pointer, StringBuilder sb) {
 		sb.append(pointer.value);
 		
-		if (pointer.next != null) {
+		if (pointer.other != null) {
 			sb.append(" -> ");
-			return append(pointer.next, sb);
+			return append(pointer.other, sb);
 		}
 		
 		else {
