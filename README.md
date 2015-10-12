@@ -1,4 +1,4 @@
 algorithms
 ==========
 
-Algorithms relating to Computer Science fundamentals, implemented in Java, and thoroughly commented.
+Algorithms relating to Computer Science fundamentals implemented in Java, commented, and unit-tested.
