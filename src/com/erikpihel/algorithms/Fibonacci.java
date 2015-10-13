@@ -10,10 +10,10 @@ public class Fibonacci {
 	/**
 	 * Given the first two numbers of a Fibonacci sequence,
 	 * generate the sequence of <code>length</code> numbers.
-	 * @param x
-	 * @param y
-	 * @param length
-	 * @return
+	 * @param x the first number of the sequence
+	 * @param y the second number of the sequence
+	 * @param length how many numbers to add before stopping
+	 * @return a Fibonacci sequence
 	 */
 	public static Integer[] generate(int x, int y, int length) {
 		List<Integer> seq = new ArrayList<>(length);
@@ -21,7 +21,7 @@ public class Fibonacci {
 		return seq.toArray(new Integer[0]);
 	}
 	
-	public static void generate(int x, int y, int length, List<Integer> seq) {
+	private static void generate(int x, int y, int length, List<Integer> seq) {
 		int itemsLeft = length - seq.size();
 		if (itemsLeft > 0) {
 			seq.add(x);
