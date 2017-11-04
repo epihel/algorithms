@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class GetLetterCombinations {
 	public static String[] getCombinations(String word) {
-		List<String> combinations = new ArrayList<String>();
+		List<String> combinations = new ArrayList<>();
 		addCombinations(word.toCharArray(), combinations, new StringBuilder());
 		return combinations.toArray(new String[0]);
 	}

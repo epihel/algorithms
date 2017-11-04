@@ -9,8 +9,8 @@ import java.util.Random;
  */
 public class ShuffleListItems {
 	public static <T> List<T> shuffle(List<T> list) {
-		List<T> shuffledList = new ArrayList<T>();
-		List<T> unshuffledList = new ArrayList<T>(list);
+		List<T> shuffledList = new ArrayList<>();
+		List<T> unshuffledList = new ArrayList<>(list);
 		Random rnd = new Random();
 		
 		for (int i = 0; i < list.size(); ++i) {

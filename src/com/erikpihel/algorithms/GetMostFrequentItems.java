@@ -22,7 +22,7 @@ public class GetMostFrequentItems {
 	public static <T> List<T> getMostFrequentItems(Collection<T> items, int numTopItems) {
 		// if num items less than numTopItems, just return all items
 		if (items == null || items.size() <= numTopItems) {
-			return new ArrayList<T>(items);
+			return new ArrayList<>(items);
 		}
 		
 		// sort by frequency and pull off the top entries
@@ -39,19 +39,19 @@ public class GetMostFrequentItems {
 	public static <T> List<T> sortByFrequency(Collection<T> items) {
 		// if 2 or less items, no frequencies
 		if (items == null || items.size() <= 2) {
-			return new ArrayList<T>(items);
+			return new ArrayList<>(items);
 		}
 		
 		else {
 			// build a map of unique item => frequency count
-			final Map<T, Integer> frequencyMap = new HashMap<T, Integer>();
+			final Map<T, Integer> frequencyMap = new HashMap<>();
 			for (T item : items) {
 				Integer currentCount = frequencyMap.get(item);
 				frequencyMap.put(item, currentCount == null ? 1 : currentCount + 1);
 			}
 			
 			// create a list of the map keys
-			List<T> allItems = new ArrayList<T>(frequencyMap.keySet());
+			List<T> allItems = new ArrayList<>(frequencyMap.keySet());
 			
 			// sort items (map keys) by frequency (map values)
 			Collections.sort(allItems, new Comparator<T>() {

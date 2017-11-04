@@ -1,10 +1,12 @@
 package com.erikpihel.algorithms;
 
-import com.erikpihel.Pointer;
 import java.util.Arrays;
 import java.util.List;
-import junit.framework.Assert;
+
+import org.junit.Assert;
 import org.junit.Test;
+
+import com.erikpihel.Pointer;
 
 public class ReverseLinkedListTest {
 	@Test
@@ -12,7 +14,7 @@ public class ReverseLinkedListTest {
 		List<Integer> list = Arrays.asList(
 			1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 		);
-		ReverseLinkedList<Integer> rll = new ReverseLinkedList<Integer>(list);
+		ReverseLinkedList<Integer> rll = new ReverseLinkedList<>(list);
 		rll.reverse();
 		
 		// new head should be original last item

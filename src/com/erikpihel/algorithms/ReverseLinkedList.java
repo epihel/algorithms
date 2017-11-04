@@ -19,10 +19,10 @@ public class ReverseLinkedList<T> extends LinkedList<Pointer<T>> {
 	 * @param list
 	 */
 	public ReverseLinkedList(List<T> list) {
-		List<Pointer<T>> pointerList = new ArrayList<Pointer<T>>(list.size());
+		List<Pointer<T>> pointerList = new ArrayList<>(list.size());
 		
 		for (int i = 0; i < list.size(); i++) {
-			Pointer<T> p = new Pointer<T>(list.get(i));
+			Pointer<T> p = new Pointer<>(list.get(i));
 			pointerList.add(p);
 			
 			// Pointer#other in this case, is a reference
