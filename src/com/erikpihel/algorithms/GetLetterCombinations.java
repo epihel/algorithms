@@ -3,11 +3,12 @@ package com.erikpihel.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Given an array of characters, returns all possible word combinations
- * from those characters.
- */
 public class GetLetterCombinations {
+	/**
+	 * Given a word, returns all possible word combinations from its characters.
+	 * @param word
+	 * @return all possible combinations
+	 */
 	public static String[] getCombinations(String word) {
 		List<String> combinations = new ArrayList<>();
 		addCombinations(word.toCharArray(), combinations, new StringBuilder());
