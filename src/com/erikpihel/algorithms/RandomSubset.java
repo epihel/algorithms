@@ -10,24 +10,27 @@ public class RandomSubset {
 	 */
 	public static int[] subset(int[] arr, int subsetSize) {
 		int len = arr.length;
+
 		if (subsetSize >= len) {
 			throw new IllegalArgumentException("Subset size [" + subsetSize + "] was greater than or equals to the array length [" + len + "].");
 		}
-		int[] subset = new int[subsetSize];
 		
-		// initialize subsetSize values so that every slot has a value
-		for (int i = 0; i < subsetSize; ++i) {
-			subset[i] = arr[i];
-		}
-		
-		// randomly replace initial values
-		for (int i = 0; i < len; ++i) {
-			int index = rnd(0, len - 1);
-			if (index < subsetSize) {
-				subset[index] = arr[i];
+		else {
+			int[] subset = new int[subsetSize];
+			
+			// initialize all subsetSize values to ensure that every slot has a value
+			for (int i = 0; i < subsetSize; ++i) {
+				subset[i] = arr[i];
 			}
+			
+			// randomly replace initial values
+			for (int i = 0; i < len; ++i) {
+				int randomIndex = rnd(0, subsetSize - 1);
+				subset[randomIndex] = arr[i];
+			}
+
+			return subset;
 		}
-		return subset;
 	}
 	
 	/**
