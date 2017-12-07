@@ -10,8 +10,8 @@ public class CalculateNextPermutation {
 	 * Given a number, calculates the next highest permutation.
 	 * 123 => 132
 	 * 132 => 213
-	 * @param num  the current number
-	 * @return the next permutation
+	 * @param num  a number
+	 * @return  the next permutation
 	 * @see https://en.wikipedia.org/wiki/Permutation
 	 */
 	public static int next(int num) {
@@ -26,6 +26,51 @@ public class CalculateNextPermutation {
 		}
 	}
 	
+	private static Pair getPair(String s, char[] chars, int posFromEnd) {
+		Pair pair = new Pair();
+		int len = s.length();
+		pair.swappingPos = len - posFromEnd;
+		pair.incremented = incrementChar(s.charAt(pair.swappingPos));
+
+		if (pair.incremented == '0') {
+			throw new UnsupportedOperationException("Incrementing two places not supported yet.");
+		}
+		
+		// if the incremented char already exists to the left of the swapping position, increment
+		else if (contains(s.substring(0, pair.swappingPos), pair.incremented)) {
+			pair.incremented = incrementChar(pair.incremented);
+			return pair;
+		}
+		
+		// if the incremented char is not outside the range of the string, we're done
+		else if (contains(s, pair.incremented)) {
+			return pair;
+		}
+		
+		// if the incremented char is outside the range of the string, try again
+		else {
+			return getPair(s, chars, posFromEnd + 1);
+		}
+	}
+	
+	private static int charToInt(char c) {
+		return Character.getNumericValue(c);
+	}
+	
+	private static char intToChar(int i) {
+		return Integer.toString(i).charAt(0);
+	}
+	
+	private static boolean contains(String s, char c) {
+		return s.contains(Character.toString(c));
+	}
+	
+	/**
+	 * Finds the next highest permutation for the given number.
+	 * Package-friendly for testing.
+	 * @param num  a number
+	 * @return  the next permutation
+	 */
 	static int increment(int num) {
 		String s = String.valueOf(num);
 		int len = s.length();
@@ -70,45 +115,6 @@ public class CalculateNextPermutation {
 			
 			return Integer.parseInt(next.toString());
 		}
-	}
-	
-	private static Pair getPair(String s, char[] chars, int posFromEnd) {
-		Pair pair = new Pair();
-		int len = s.length();
-		pair.swappingPos = len - posFromEnd;
-		pair.incremented = incrementChar(s.charAt(pair.swappingPos));
-
-		if (pair.incremented == '0') {
-			throw new UnsupportedOperationException("Incrementing two places not supported yet.");
-		}
-		
-		// if the incremented char already exists to the left of the swapping position, increment
-		else if (contains(s.substring(0, pair.swappingPos), pair.incremented)) {
-			pair.incremented = incrementChar(pair.incremented);
-			return pair;
-		}
-		
-		// if the incremented char is not outside the range of the string, we're done
-		else if (contains(s, pair.incremented)) {
-			return pair;
-		}
-		
-		// if the incremented char is outside the range of the string, try again
-		else {
-			return getPair(s, chars, posFromEnd + 1);
-		}
-	}
-	
-	private static int charToInt(char c) {
-		return Character.getNumericValue(c);
-	}
-	
-	private static char intToChar(int i) {
-		return Integer.toString(i).charAt(0);
-	}
-	
-	private static boolean contains(String s, char c) {
-		return s.contains(Character.toString(c));
 	}
 	
 	/**
