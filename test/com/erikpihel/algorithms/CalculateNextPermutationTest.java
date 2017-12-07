@@ -22,7 +22,29 @@ public class CalculateNextPermutationTest {
 		testNext(1324, 1342);
 		testNext(1342, 1423);
 		testNext(1423, 1432);
-		//testNext(1432, 2134);
+		testNext(1432, 2134);
+		testNext(2134, 2143);
+		testNext(2143, 2314);
+		testNext(2314, 2341);
+		testNext(2341, 2413);
+		testNext(2413, 2431);
+		testNext(2431, 3124);
+		testNext(3124, 3142);
+		testNext(3142, 3214);
+		testNext(3214, 3241);
+		testNext(3241, 3412);
+		testNext(3412, 3421);
+		testNext(3421, 4123);
+		testNext(4123, 4132);
+		testNext(4132, 4213);
+		testNext(4213, 4231);
+		testNext(4231, 4312);
+		testNext(4312, 4321);
+		
+		testNext(12345, 12354);
+		testNext(12354, 12435);
+		testNext(12435, 12453);
+		testNext(12453, 12534);
 	}
 	
 	@Test
@@ -32,7 +54,8 @@ public class CalculateNextPermutationTest {
 		
 		testIncrement(1243, 1324);
 		testIncrement(1342, 1423);
-		//testIncrement(1432, 2134);
+		testIncrement(1432, 2134);
+		testIncrement(2143, 2314);
 	}
 	
 	@Test

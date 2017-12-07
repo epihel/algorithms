@@ -2,6 +2,8 @@ package com.erikpihel.algorithms;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class CalculateNextPermutation {
 	/**
@@ -50,10 +52,20 @@ public class CalculateNextPermutation {
 			char nextChar = smallest(chars, excluded);
 			next.append(nextChar);
 
+			// append remaining numbers in ascending order to ensure we add the next smallest
+			Collection<Integer> remaining = new TreeSet<>(new Comparator<Integer>() {
+				@Override
+				public int compare(Integer firstInt, Integer secondInt) {
+					return firstInt.compareTo(secondInt);
+				}
+			});
 			for (int i = Math.max(0, pair.swappingPos); i < len; ++i) {
 				if (chars[i] != pair.incremented && chars[i] != nextChar) {
-					next.append(chars[i]);
+					remaining.add(charToInt(chars[i]));
 				}
+			}
+			for (int i : remaining) {
+				next.append(intToChar(i));
 			}
 			
 			return Integer.parseInt(next.toString());
@@ -70,10 +82,18 @@ public class CalculateNextPermutation {
 			throw new UnsupportedOperationException("Incrementing two places not supported yet.");
 		}
 		
+		// if the incremented char already exists to the left of the swapping position, increment
+		else if (contains(s.substring(0, pair.swappingPos), pair.incremented)) {
+			pair.incremented = incrementChar(pair.incremented);
+			return pair;
+		}
+		
+		// if the incremented char is not outside the range of the string, we're done
 		else if (contains(s, pair.incremented)) {
 			return pair;
 		}
 		
+		// if the incremented char is outside the range of the string, try again
 		else {
 			return getPair(s, chars, posFromEnd + 1);
 		}
