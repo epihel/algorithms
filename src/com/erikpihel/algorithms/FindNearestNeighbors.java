@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.erikpihel.DistanceCalculator;
+
 /**
  * Given a list of points, finds the {@link #NUM_NEIGHBORS} closest neighbors
  * for each point in the list.
@@ -18,8 +20,8 @@ public class FindNearestNeighbors {
 	// package-friendly for testing
 	static final double INIT_VALUE = -1;
 
-	public static int[][] findNeighbors(int[][] points) {
-		int[][] neighbors = new int[points.length][NUM_NEIGHBORS];
+	public static Integer[][] findNeighbors(Integer[][] points) {
+		Integer[][] neighbors = new Integer[points.length][NUM_NEIGHBORS];
 	    for (int i = 0; i < points.length; i++) {
 	    	neighbors[i] = findNeighborsForOnePoint(points, points[i], i);
 	    }
@@ -34,7 +36,7 @@ public class FindNearestNeighbors {
 	 * @param i  the index of the point in <code>allPoints</code>
 	 * @return
 	 */
-	static int[] findNeighborsForOnePoint(int[][] allPoints, int[] point, int i) {
+	static Integer[] findNeighborsForOnePoint(Integer[][] allPoints, Integer[] point, int i) {
 		// distance to index in point array
 		Map<Double, Integer> distanceToIndex = new HashMap<>();
 		// the shortest distances (keys for distanceToIndex)
@@ -47,7 +49,7 @@ public class FindNearestNeighbors {
 		for (int j = 0; j < allPoints.length; j++) {
 			// skip the point itself
 			if (j != i) {
-				double distance = getDistance(point, allPoints[j]);
+				double distance = DistanceCalculator.getDistance(point, allPoints[j]);
 				distanceToIndex.put(distance, j);
 				insert(shortestDistances, distance);
 			}
@@ -55,7 +57,7 @@ public class FindNearestNeighbors {
 		
 		// now that we have the final array of shortest distances,
 		// use map to get the indices in the original points array
-		int[] indices = new int[NUM_NEIGHBORS];
+		Integer[] indices = new Integer[NUM_NEIGHBORS];
 		for (int j = 0; j < indices.length; j++) {
 			indices[j] = distanceToIndex.get(shortestDistances[j]);
 		}
@@ -88,17 +90,5 @@ public class FindNearestNeighbors {
 				break;
 			}
 		}
-	}
-	
-	/**
-	 * Gets the distance between two points.
-	 * d^2 = (x2-x1)^2 + (y2-y1)^2
-	 * @param firstPt
-	 * @param secondPt
-	 * @return
-	 */
-	private static double getDistance(int[] firstPt, int[] secondPt) {
-		double distanceSquared = (Math.pow(firstPt[0] - secondPt[0], 2) + Math.pow(firstPt[1] - secondPt[1], 2));
-		return Math.sqrt(distanceSquared);
 	}
 }
